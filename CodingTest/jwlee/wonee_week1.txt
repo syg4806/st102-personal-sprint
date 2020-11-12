@@ -1,0 +1,234 @@
+문제링크 : https://programmers.co.kr/learn/courses/30/lessons/12950
+//2차원배열 덧셈이다. 껌이지!
+
+class Solution {
+    public int[][] solution(int[][] arr1, int[][] arr2) {
+        int[][] answer = new int[arr1.length][arr1[0].length];
+        
+        for(int i=0; i < arr1.length; i++) {
+            for(int j=0; j < arr1[0].length; j++) {
+                answer[i][j] = arr1[i][j] + arr2[i][j];
+            }
+        }
+        return answer;
+    }
+}
+
+
+
+
+문제링크 : https://programmers.co.kr/learn/courses/30/lessons/12954
+//문제 말 그대로 풀었다. x만큼의 간격을 주고 n개니까 n개 반복문 돌리면서 x만큼 더해서 배열에 넣어서 리턴한다. 근데 tmp를 안하면 오류난다. 첨엔 개짜증났다. 
+
+class Solution {
+    public long[] solution(int x, int n) {
+        long[] answer = new long[n];
+        long tmp = x;
+        
+        for(int i = 0; i < n; i++) {
+            answer[i] = tmp * (i + 1);
+        }
+        return answer;
+    }
+}
+
+
+
+
+문제링크 : https://programmers.co.kr/learn/courses/30/lessons/12922
+//수박이 반복된다. String으로 넣어놓고 n이 짝수면 n/2해서 리턴하고 홀수면 수 한번 더 붙여서 리턴해야겠따
+
+class Solution {
+    public String solution(int n) {
+        String answer = "";
+        
+        String suback = "수박";
+        
+        
+             for(int i=0; i < n/2; i++)
+            answer += "수박";
+        if(n % 2 == 0)
+             return answer;
+        else {
+            answer += "수";
+            return answer;
+        }
+            
+    }
+}
+
+
+
+
+
+문제링크 : https://programmers.co.kr/learn/courses/30/lessons/12919
+//for each로 돌려야겠따
+
+class Solution {
+    public String solution(String[] seoul) {
+        //처음에 for each 문을 사용하려고 했으나 인덱스를 얻어오지 못한다는 것을 깨닫고 그냥 for 문으로 돌리기로 했다. 
+        for(int i=0; i<seoul.length;i++) {
+            if(seoul[i].equals("Kim"))
+                return "김서방은 " + i + "에 있다";
+        }
+        return "";
+    }
+}
+
+
+
+
+
+문제링크 : https://programmers.co.kr/learn/courses/30/lessons/12912
+//말그대로 둘 사이의 합을 구해서 리턴한다. 
+
+class Solution {
+    public long solution(int a, int b) {
+        long answer = 0;
+        
+        if(a <= b) {
+            for(int i = a; i <= b; i++) 
+            answer += i;
+        }
+        else {
+            for(int i = b; i <= a; i++)
+                answer += i;
+        } //사실 여기서 i >= a 라고 해놓고 헤맴........반성중.....
+        
+        return answer;
+    }
+}
+
+
+
+
+문제링크 : https://programmers.co.kr/learn/courses/30/lessons/12910
+//문제 그대로 나누어 떨어지면 넣고 없으면 -1리턴한다. 근데 배열로 하면 사이즈를 모르니까 Arraylist로 해야겠따
+
+import java.util.*;
+class Solution {
+    public int[] solution(int[] arr, int divisor) {
+
+        List<Integer> list = new ArrayList<>();
+
+        for(int i =0; i < arr.length;i++) {
+            if(arr[i] % divisor == 0)
+                list.add(arr[i]);
+        } //나누어떨어지면 arraylist 에 넣고
+
+        list.sort(null); //정렬하고 
+
+        if(list.size() == 0) 
+            list.add(-1); //나누어 떨어지는게 없으면 -1 리턴하고
+
+        return list.stream().mapToInt(i -> i).toArray(); //다른사람의 풀이를 보니 stream을 이용해 푸는 방법이 있었다! 유용하게 쓰일 거 같아서 기억해놔야겠다.
+    }
+}
+
+
+
+
+문제링크 : https://programmers.co.kr/learn/courses/30/lessons/12901
+// 요일들이랑 날들을 배열에 넣어놓고 다 더해서 나누기 7하면 머가 나오겠지? 그걸로 요일을 구해야겠따 
+
+class Solution {
+    public String solution(int a, int b) {
+        String[] day = {"FRI", "SAT", "SUN", "MON", "TUE", "WED", "THU"};
+        //요일을 배열에 넣는다.1일이 금요일이니까 일단 금요일일을 처음으로 해본다.
+        int[] month = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        //달도 배열에 넣는다.
+        //만약 5월 24일이 들어온다면?
+        int month_sum = 0;
+
+        for(int i = 0; i < a-1; i++) {
+            month_sum += month[i];
+        } //달을 다 더해주고
+        int sum = month_sum + b-1;
+        //일수도 더해준다. 1일부터 시작하니까 1빼주고
+        return day[sum % 7]; //나머지로 요일 구하기
+    }
+}
+
+
+
+
+문제링크 : https://programmers.co.kr/learn/courses/30/lessons/42840
+//패턴을 배열에 넣고 나머지를 이용해서 답을 맞추면 인덱스를 증가시킨다. 거기서 가장 잘한 점수를 찾고 리턴해야겠따. 
+
+처음 코드
+class Solution {
+    public int[] solution(int[] answers) {
+        
+        int[] st1 = {1,2,3,4,5};
+        int[] st2 = {2,1,2,3,2,4,2,5};
+        int[] st3 = {3,3,1,1,2,2,4,4,5,5};
+        int[] dob = new int[3];
+        
+        for(int i =0; i < answers.length; i++) {
+            if(st1[i%5] == answers[i])
+                dob[0]++;
+            if(st2[i%8] == answers[i])
+                dob[1]++;
+            if(st3[i%10] == answers[i])
+                dob[2]++;
+        }
+        
+        int max = dob[0];
+        for(int i =0; i<dob.length;i++) {
+            if(max <= dob[i])
+                max = dob[i];
+        } //가장 잘한 점수를 찾고
+        
+        int[] answer = new int[dob.length];
+        
+        for(int i=0;i<dob.length;i++) {
+            if(dob[i] == max)
+                answer[i] = i+1;
+        }
+       //여기서 answer은 무조건 dob의 길이와 같아서 정답이 1명이어도 인덱스가 3이라 틀렸다...그래서 arraylist 를 사용하게 되었따!
+        return answer;
+    }
+}
+
+
+고친 코드
+import java.util.*;
+class Solution {
+    public int[] solution(int[] answers) {
+
+        int[] st1 = {1,2,3,4,5};
+        int[] st2 = {2,1,2,3,2,4,2,5};
+        int[] st3 = {3,3,1,1,2,2,4,4,5,5};
+        int[] dob = new int[3];
+        
+        for(int i =0; i < answers.length; i++) {
+            if(st1[i%5] == answers[i])
+                dob[0]++;
+            if(st2[i%8] == answers[i])
+                dob[1]++;
+            if(st3[i%10] == answers[i])
+                dob[2]++;
+        }
+        
+        int max = dob[0];
+        for(int i =0; i<dob.length;i++) {
+            if(max <= dob[i])
+                max = dob[i];
+        } //가장 잘한 점수를 찾고
+        
+        List<Integer> list = new ArrayList<>();
+        for(int i =0;i<dob.length;i++)
+        if(max == dob[i])
+            list.add(i+1);
+        
+        //높은 점수랑 같으면 Arraylist에 넣고
+        
+        int[] answer = new int[list.size()];
+        
+        for(int i=0;i<list.size();i++) {
+            answer[i] = list.get(i);
+        }
+       
+        return answer;
+    }
+}
