@@ -232,3 +232,37 @@ class Solution {
         return answer;
     }
 }
+
+또 고친 코드
+import java.util.*;
+class Solution {
+    public int[] solution(int[] answers) {
+
+        int[] st1 = {1,2,3,4,5};
+        int[] st2 = {2,1,2,3,2,4,2,5};
+        int[] st3 = {3,3,1,1,2,2,4,4,5,5};
+        int[] dob = new int[3];
+        
+        for(int i =0; i < answers.length; i++) {
+            if(st1[i%5] == answers[i])
+                dob[0]++;
+            if(st2[i%8] == answers[i])
+                dob[1]++;
+            if(st3[i%10] == answers[i])
+                dob[2]++;
+        }
+        
+      //가장 잘한 점수를 찾을 때. math 메소드를 활용할 수 있다는 것을 알았따! 근데 이건 3개라서 가능한 문장이지 더 많거나 몇명이 들어올지 모른다면 어떻게 해야할지 고민해봤는데 리스트에 넣어서 Collections.max 하는 방법 등등이 있을 것 같았다. 어떤 상황에 어떤 자료구조를 써야하는지 연습 많이 해봐야겠따
+        int max = Math.max(Math.max(dob[0], dob[1]), dob[2]);
+        
+        List<Integer> list = new ArrayList<>();
+        for(int i =0;i<dob.length;i++)
+        if(max == dob[i])
+            list.add(i+1);
+        //높은 점수랑 같으면 Arraylist에 넣고
+        
+       
+        return list.stream().mapToInt(i->i.intValue()).toArray();
+	//저번에 배웠던 스트림으로 arraylist를 배열로 바꿔줬다. 가독성이 좋아진 것 같다
+    }
+}
