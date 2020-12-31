@@ -1,0 +1,36 @@
+//https://programmers.co.kr/learn/courses/30/lessons/42862
+//체육복. hashset 써야하나 고민했지만 더 복잡해질 것 같아서 그냥 했다. 생각할 거랑 예외가 은근히 많아서 오래걸렸따..... 보통 이런문제 푸는데 몇분이 적당하다고 보니?
+class Solution {
+    public int solution(int n, int[] lost, int[] reserve) {
+        int answer = 0;
+        int count = 0;
+        int lostreserve = 0;
+        //여벌 옷 있는 애는 도난당하면 빌려줄 수 없다.
+        for(int i = 0; i < lost.length; i++) {
+            for(int j = 0; j < reserve.length; j++)
+                if(lost[i] == reserve[j]) {
+                    lostreserve++;
+                    lost[i] = -10;
+                    reserve[j] = -10;
+                    break;
+                }
+
+        }
+
+        //도난당했으면 앞 뒤에서 빌려본다.
+        for(int i = 0; i < lost.length; i++) {
+            for(int j = 0; j < reserve.length; j++) {
+                if((lost[i] - 1) == reserve[j] || (lost[i] + 1) == reserve[j]) {
+                   reserve[j] = -10;
+                    count++;
+                    break;
+                }
+
+            }
+
+        }
+//답은 전체 학생수에서 잃어버린 애들을 뺀 다음, 빌린애들을 더해주고 자기자신꺼 쓴애도 더해줬음.
+        answer = n - lost.length + lostreserve +count;
+        return answer;
+    }
+}

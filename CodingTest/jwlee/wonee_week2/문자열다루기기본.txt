@@ -1,0 +1,36 @@
+//https://programmers.co.kr/learn/courses/30/lessons/12918?language=java
+//문자열 전체가 숫자인지 문자인지 구별하는 방법은 두번째꺼가 더 좋아서 기억해놔야겠다!
+
+class Solution {
+    public boolean solution(String s) {
+        int len = s.length();
+        
+        if(len != 4 && len != 6)
+            return false;
+        
+        for(int i = 0; i < len; i++) {
+            char tmp = s.charAt(i);
+            if(tmp < 48 || tmp > 58)
+                return false;
+        }
+        
+        return true;
+    }
+}
+
+
+class Solution {
+    public boolean solution(String s) {
+        int len = s.length();
+        
+        if(len != 4 && len != 6)
+            return false;
+        
+        
+        if(s.split("[0-9]").length > 0)
+            return false;
+        
+        
+        return true;
+    }
+}
