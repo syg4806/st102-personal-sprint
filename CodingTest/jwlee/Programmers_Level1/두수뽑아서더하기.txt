@@ -1,0 +1,46 @@
+//https://programmers.co.kr/learn/courses/30/lessons/68644
+//중복되면 안되니까 Set에 넣는다.
+
+import java.util.*;
+class Solution {
+    public int[] solution(int[] numbers) {
+        
+        int len = numbers.length;
+        int index = 0;
+        Set<Integer> temp = new HashSet<>();
+        
+        for(int i = 0; i < len; i++) {
+            for(int j = 0; j < len; j++) {
+                if(i == j)
+                    continue;
+                temp.add(numbers[i] + numbers[j]);
+            }
+        }
+        
+        int[] answer = new int[temp.size()];
+        Iterator<Integer> itr = temp.iterator(); 
+        while(itr.hasNext()) {
+            answer[index++] = itr.next();
+        }
+        
+        Arrays.sort(answer);
+        return answer;
+    }
+}
+
+//여기서 궁금한 점! 다른 사람들은 
+for(int i = 0; i < len; i++) {
+            for(int j = 0; j < len; j++) {
+                if(i == j)
+                    continue;
+                temp.add(numbers[i] + numbers[j]);
+            }
+        }
+이부분을
+for (int i = 0; i < numbers.length - 1; i++) {
+            for (int j = i + 1; j < numbers.length; j++) {
+                set.add(numbers[i] + numbers[j]);
+            }
+        }
+
+이렇게 하던데 이게 어떻게 가능한건지 모르겠어.. 설명해줄수있겠니?

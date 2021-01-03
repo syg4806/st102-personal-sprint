@@ -1,0 +1,8 @@
+//https://programmers.co.kr/learn/courses/30/lessons/12925
+//여기서도 다른 사람 풀이를 보니까 직접 구현한 사람이 많던데 그렇게 짜면 훈련되서 좋은거야?!
+class Solution {
+  public int solution(String s) {
+      int answer = Integer.valueOf(s);
+      return answer;
+  }
+}

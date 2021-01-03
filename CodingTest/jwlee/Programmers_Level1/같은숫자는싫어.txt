@@ -1,0 +1,26 @@
+//https://programmers.co.kr/learn/courses/30/lessons/12906
+//뒤에 숫자랑 같으면 넣고 아니면 넘어간다. 라는 아이디어만 갖고 했다! 마지막 인덱스에는 비교할 뒷 숫자가 없으니까 break해줬다.
+
+import java.util.*;
+
+public class Solution {
+    public int[] solution(int[] arr) {
+
+        ArrayList<Integer> temp = new ArrayList<>(); //사이즈를 알수없으니까 ArrayList써줘야한다
+
+
+        
+        for(int i = 0; i < arr.length; i++) { 
+            if(i == arr.length - 1) { //마지막인덱스에서 반복문 나감
+                temp.add(arr[i]);
+                break;
+            }
+            if(arr[i] != arr[i+1]) { //뒤에꺼랑 같으면 넣고 아니면 넘어간다.
+                temp.add(arr[i]);
+            }
+        }
+
+
+        return temp.stream().mapToInt(i -> i).toArray(); //배열로 변환
+    }
+}

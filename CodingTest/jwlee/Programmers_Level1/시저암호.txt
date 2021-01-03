@@ -1,0 +1,27 @@
+//https://programmers.co.kr/learn/courses/30/lessons/12926
+//처음엔 떠오르는게 replace함수를 쓰는 것이었는데 인자가 string형이어야해서 복잡해졌다. 갈아엎어~!
+//풀면서 내가 형변환에 약하다는 것을 발견해서 다시 공부했다.
+
+class Solution {
+    public String solution(String s, int n) {
+
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+
+            if (ch >= 'a' && ch <= 'z') {
+                ch = (char) (ch + n);
+                if (ch > 'z')
+                    ch -= 26;
+            } else if (ch >= 'A' && ch <= 'Z') {
+                ch = (char) (ch + n);
+                if (ch > 'Z')
+                    ch -= 26;
+            }
+
+            sb.append(ch);
+        }
+        return sb.toString();
+    }
+}
