@@ -1,0 +1,63 @@
+
+#https://codeup.kr/problem.php?id=4818
+#중간에 index range 오버해서 좀 해멨다....
+
+
+val = [[0]*m for i in range(n)] #배열 만들고
+
+
+
+#배열에 경로의 수를 넣는다. 0 0 일땐 패스
+
+def val_set():
+
+    val[0][0] = 1
+
+    for i in range(0, n):
+
+        for j in range(0, m):
+
+            if i == 0 and j == 0:
+
+                continue
+
+            val[i][j] = val[i-1][j] + val[i][j-1]
+
+
+
+            
+
+val_set()
+
+
+
+
+
+
+
+if k != 0: #k 가 0이 아닐때 좌표찾기. 반복문으로 찾아도 되는데 걍 일케해써...
+
+    a = k // m
+
+    b = k % m
+
+    if b == 0:
+
+        a -= 1
+
+        b = m - 1
+
+    else:
+
+        b -= 1
+
+        
+
+    print(val[a][b] * val[n-a-1][m-b-1]) #그 왜 동그라미 쳐있으면 중간 거쳐서 가는거랑 똑같은 사이즈val 곱하면 총 경로 나오니까!
+
+    
+
+else: #k가 0일때
+
+    print(val[n-1][m-1])
+

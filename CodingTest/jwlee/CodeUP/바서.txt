@@ -1,0 +1,78 @@
+
+#https://codeup.kr/problem.php?id=2084
+# 바이너리 서치. 나중에 재귀로도 풀어봐야겠다
+ 
+n = int(input())
+
+
+
+val = list(map(int, input().split()))
+
+val.sort()
+
+
+
+ans = []
+
+
+
+num = int(input())
+
+
+
+def BSearch(s):
+
+    low = 0
+
+    high = len(val)-1
+
+    
+
+    while low <= high:
+
+        mid = (low+high)//2
+
+
+
+        if val[mid] == s:
+
+            return mid + 1
+
+        elif val[mid] > s:
+
+            high = mid - 1
+
+        else:
+
+            low = mid + 1
+
+            
+
+    return -1
+
+
+
+
+
+for i in range(num):
+
+    s = int(input())
+
+    ans.append(BSearch(s))
+
+
+
+
+
+
+
+
+
+for a in ans:
+
+    print(a)
+
+
+
+
+
