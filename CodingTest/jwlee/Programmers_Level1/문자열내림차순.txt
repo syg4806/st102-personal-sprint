@@ -1,0 +1,14 @@
+//https://programmers.co.kr/learn/courses/30/lessons/12917
+//내림차순 정렬문제!
+import java.util.*;
+
+class Solution {
+  public String solution(String s) {
+
+      String[] arr = s.split("");
+
+      Arrays.sort(arr, Collections.reverseOrder());
+
+      return String.join("", arr);
+  }
+}

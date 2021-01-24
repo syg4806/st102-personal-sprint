@@ -1,0 +1,20 @@
+//https://programmers.co.kr/learn/courses/30/lessons/12915
+//문자열 내맘대로 정렬. 이번 학기에 객프를 재수강했더니^^ 보자마자 Comparable 아니면 Comparator 써야겠다는 생각이 들었다. Comparator 가 더 간단할 거 같아서 썼다. 
+
+import java.util.*;
+class Solution {
+    public String[] solution(String[] strings, int n) {
+
+        Arrays.sort(strings, new Comparator<String>() {
+            public int compare(String o1, String o2) {
+                char c1 = o1.charAt(n);
+                char c2 = o2.charAt(n);
+
+                if(c1 == c2) return o1.compareTo(o2);
+                else return c1 - c2;
+            }
+        });
+
+        return strings;
+    }
+}

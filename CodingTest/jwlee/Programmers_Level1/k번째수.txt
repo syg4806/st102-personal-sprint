@@ -1,0 +1,20 @@
+//https://programmers.co.kr/learn/courses/30/lessons/42748
+//처음부터 당연히 이렇게 써야지 생각했는데 사람들은 라이브러리 안쓰고 직접 copyOfRange랑 sort 를 만들어서 쓰던데 코테에서 라이브러리를 쓰는 것보다 낫다고 하는데 이유가 뭘까?
+import java.util.*;
+
+class Solution {
+    public int[] solution(int[] array, int[][] commands) {
+        int[] answer = new int[commands.length];
+
+        for (int i = 0; i < commands.length; i++) {
+            int from = commands[i][0] - 1;
+            int to = commands[i][1];
+            int[] subArray = Arrays.copyOfRange(array, from, to);
+            Arrays.sort(subArray);
+
+            answer[i] = subArray[commands[i][2] - 1];
+        }
+
+        return answer;
+    }
+}
