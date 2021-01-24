@@ -1,0 +1,25 @@
+#https://codeup.kr/problem.php?id=3008
+#7개를 뽑아서 더하기 보다 전체 더한거에서 두명 뺐을때 100하는게 빠르겠다
+
+hei = []
+
+
+for i in range(9):
+    hei.append(int(input()))
+
+    
+hei.sort()
+sum_val = sum(hei) #합하고 
+
+
+for a in range(9):
+    for b in range(9):
+        if a == b:
+            continue
+        else:
+            if sum_val - hei[a] - hei[b] == 100: #뺐을 때 100이면
+                for c in range(9):
+                    if c != a and c != b:
+                        print(hei[c]) #출력
+                exit()
+                
