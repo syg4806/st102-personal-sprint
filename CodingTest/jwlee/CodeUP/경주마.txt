@@ -1,0 +1,59 @@
+
+
+#https://codeup.kr/problem.php?id=1509
+#재밌었던 문제!
+
+
+array = [[0]*10]*11
+
+
+
+def ans():
+
+    for i in range(11):
+
+        for j in range(10):
+
+            print(array[i][j], end=' ')
+
+
+
+        print()
+
+
+
+
+
+for i in range(11):
+
+    array[i] = list(map(int, input().split()))
+
+
+
+
+
+for b in range(10):
+
+    if array[10][b] != 0:
+
+        for a in reversed(range(10)):
+
+            if array[a][b] != 0:
+
+                if array[a][b] > 0:
+
+                    print(str(b+1) + " crash")
+
+                    break
+
+                elif array[a][b] < 0:
+
+                    print(str(b+1) + str(" fall"))
+
+                    break
+
+            if a == 0:
+
+                print(str(b+1) + " safe")
+
+        

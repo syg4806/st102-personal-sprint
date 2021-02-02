@@ -1,0 +1,76 @@
+#https://codeup.kr/problem.php?id=4876
+#딱지치기! 반복되는게 많아서 반성되는 코드입니 ..다..
+round = int(input())
+
+ans = ""
+
+
+
+def has(l, v):
+
+    num = 0
+
+    for k in range(1, len(l)):
+
+        if l[k] == v:
+
+            num += 1
+
+    return num    
+
+    
+
+for i in range(round):
+
+    a = list(map(int, input().split()))
+
+    b = list(map(int, input().split()))
+
+    if has(a, 4) > has(b, 4):
+
+        ans += "A"
+
+    elif has(a, 4) == has(b, 4):
+
+        if has(a, 3) > has(b, 3):
+
+            ans += "A"
+
+        elif has(a, 3) == has(b, 3):
+
+            if has(a, 2) > has(b, 2):
+
+                ans += "A"
+
+            elif has(a, 2) == has(b, 2):
+
+                if has(a, 1) > has(b, 1):
+
+                    ans += "A"
+
+                elif has(a, 1) == has(b, 1):
+
+                    ans += "D"
+
+                else:
+
+                    ans += "B"
+
+            else:
+
+                ans += "B"
+
+        else:
+
+            ans += "B"
+
+    else:
+
+        ans += "B"
+
+    
+
+for i in range(len(ans)):
+
+    print(ans[i])
+
