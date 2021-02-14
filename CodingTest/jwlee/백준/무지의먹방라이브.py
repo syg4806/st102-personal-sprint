@@ -1,5 +1,6 @@
 #그리디. 처음엔 -1 해가면서 반복문으로 접근했는데 시간이랑 효율성에서 어림도 없었다
 #남은 접시 양까지 출력하는거 아니고 그 순서 번호만 나오면 되는거니까 걸리는 시간이 적은 음식부터 빼가면서 생각해야겠다 힙을 써야하겠다
+#https://programmers.co.kr/learn/courses/30/lessons/42891
 
 import heapq
 def solution(food_times, k):
